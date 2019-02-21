@@ -1,0 +1,88 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// Korean resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_KOR)
+#ifdef _WIN32
+LANGUAGE LANG_KOREAN, SUBLANG_DEFAULT
+#pragma code_page(949)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+BLOCK_YELLOW            BITMAP                  "C:\\Documents and Settings\\Administrator\\My Documents\\테트\\bmp_BlockYellow.bmp"
+BLOCK_BLUE              BITMAP                  "C:\\Documents and Settings\\Administrator\\My Documents\\테트\\bmp_BlockBlue.bmp"
+BLOCK_GRAY              BITMAP                  "C:\\Documents and Settings\\Administrator\\My Documents\\테트\\bmp_BlockGray.bmp"
+BLOCK_GREEN             BITMAP                  "C:\\Documents and Settings\\Administrator\\My Documents\\테트\\bmp_BlockGreen.bmp"
+BLOCK_ORANGE            BITMAP                  "C:\\Documents and Settings\\Administrator\\My Documents\\테트\\bmp_BlockOrange.bmp"
+BLOCK_RED               BITMAP                  "C:\\Documents and Settings\\Administrator\\My Documents\\테트\\bmp_BlockRed.bmp"
+BLOCK_SKYBLUE           BITMAP                  "C:\\Documents and Settings\\Administrator\\My Documents\\테트\\bmp_BlockSky.bmp"
+BLOCK_VIOLET            BITMAP                  "C:\\Documents and Settings\\Administrator\\My Documents\\테트\\bmp_BlockViolet.bmp"
+NUMBER9                 BITMAP                  "resource\\bmp_NUMBER9_S.bmp"
+NUMBER8                 BITMAP                  "resource\\bmp_NUBMER8_S.bmp"
+NUMBER0                 BITMAP                  "resource\\bmp_NUMBER0_S.bmp"
+NUMBER1                 BITMAP                  "resource\\bmp_NUMBER1_S.bmp"
+NUMBER2                 BITMAP                  "resource\\bmp_NUMBER2_S.bmp"
+NUMBER3                 BITMAP                  "resource\\bmp_NUMBER3_S.bmp"
+NUMBER4                 BITMAP                  "resource\\bmp_NUMBER4_S.bmp"
+NUMBER5                 BITMAP                  "resource\\bmp_NUMBER5_S.bmp"
+NUMBER6                 BITMAP                  "resource\\bmp_NUMBER6_S.bmp"
+NUMBER7                 BITMAP                  "resource\\bmp_NUMBER7_S.bmp"
+IDB_BITMAP3             BITMAP                  "C:\\Documents and Settings\\Administrator\\My Documents\\테트\\bmp_COMMA.bmp"
+#endif    // Korean resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+
