@@ -1,0 +1,10 @@
+*.suo
+*.db
+*.ipch
+*.tlog
+*.log
+*.pch
+*.obj
+*.pdb
+*.idb
+*.res

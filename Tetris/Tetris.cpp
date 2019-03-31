@@ -1,4 +1,4 @@
-#include<windows.h>
+Ôªø#include "stdafx.h"
 #include"Tet.h"
 #include"resource.h"
 #include<commctrl.h>
@@ -8,18 +8,18 @@
 
 LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam);
 
-VOID CALLBACK Proc_DropDown(HWND hWnd, UINT uMsg, UINT idEvent, DWORD dwTime );
+VOID CALLBACK Proc_DropDown(HWND hWnd, UINT uMsg, UINT idEvent, DWORD dwTime);
 
 int Msg_PAINT(HWND hWnd, WPARAM wParam, LPARAM lParam);
 int Msg_CREATE(HWND hWnd, WPARAM wParam, LPARAM lParam);
 int Msg_KEYDOWN(HWND hWnd, WPARAM wParam, LPARAM lParam);
 int Msg_DESTROY(HWND hWnd, WPARAM wParam, LPARAM lParam);
 
-void DrawBitmap( HDC hdc, int x, int y, HBITMAP hBit);
-void DoubleBufferingDraw( void );
+void DrawBitmap(HDC hdc, int x, int y, HBITMAP hBit);
+void DoubleBufferingDraw(void);
 
 HINSTANCE g_hInst;
-LPCTSTR lpszClass = TEXT( "≈◊∆Æ∏ÆΩ∫" );
+LPCTSTR lpszClass = TEXT("ÌÖåÌä∏Î¶¨Ïä§");
 
 HWND hMainWnd;
 
@@ -55,18 +55,18 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 
 	RegisterClass(&WndClass);
 
-	hWnd = CreateWindow(lpszClass, lpszClass, WS_OVERLAPPEDWINDOW, 
-		CW_USEDEFAULT, CW_USEDEFAULT, CW_USEDEFAULT, CW_USEDEFAULT, 
+	hWnd = CreateWindow(lpszClass, lpszClass, WS_OVERLAPPEDWINDOW,
+		CW_USEDEFAULT, CW_USEDEFAULT, CW_USEDEFAULT, CW_USEDEFAULT,
 		NULL, (HMENU)NULL, hInstance, NULL);
 	ShowWindow(hWnd, nCmdShow);
 
-/*
-	hWnd = CreateWindowEx(NULL ,lpszClass, lpszClass, WS_OVERLAPPEDWINDOW, 
-		CW_USEDEFAULT, CW_USEDEFAULT, CW_USEDEFAULT, CW_USEDEFAULT, 
-		NULL, (HMENU)NULL, hInstance, NULL);
-*/
+	/*
+		hWnd = CreateWindowEx(NULL ,lpszClass, lpszClass, WS_OVERLAPPEDWINDOW,
+			CW_USEDEFAULT, CW_USEDEFAULT, CW_USEDEFAULT, CW_USEDEFAULT,
+			NULL, (HMENU)NULL, hInstance, NULL);
+	*/
 
-	while( GetMessage( &Message, NULL, 0, 0)) 
+	while (GetMessage(&Message, NULL, 0, 0))
 	{
 		TranslateMessage(&Message);
 		DispatchMessage(&Message);
@@ -79,7 +79,7 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 
 LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
 {
-	switch( iMessage )
+	switch (iMessage)
 	{
 	case WM_CREATE:
 		hMainWnd = hWnd;
@@ -88,10 +88,10 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
 		return Msg_PAINT(hWnd, wParam, lParam);
 	case WM_KEYDOWN:
 		return Msg_KEYDOWN(hWnd, wParam, lParam);
-	case WM_DESTROY:		
+	case WM_DESTROY:
 		return Msg_DESTROY(hWnd, wParam, lParam);
 	case WM_LBUTTONDOWN:
-		wsprintf(str, TEXT("%d %d"), LOWORD(lParam), HIWORD(lParam) );
+		wsprintf(str, TEXT("%d %d"), LOWORD(lParam), HIWORD(lParam));
 		SetWindowText(hWnd, str);
 		return 0;
 	}
@@ -105,8 +105,8 @@ int Msg_PAINT(HWND hWnd, WPARAM wParam, LPARAM lParam)
 
 	hdc = BeginPaint(hWnd, &ps);
 
-	if( hBit )
-		DrawBitmap( hdc, 0, 0, hBit );
+	if (hBit)
+		DrawBitmap(hdc, 0, 0, hBit);
 
 	EndPaint(hWnd, &ps);
 	return 0;
@@ -117,27 +117,27 @@ int Msg_CREATE(HWND hWnd, WPARAM wParam, LPARAM lParam)
 	int i;
 	int j;
 
-	srand( GetTickCount() ) ;
-	
+	srand(GetTickCount());
+
 	rtTet.left = LEFT_SPACE;
 	rtTet.top = TOP_SPACE;
 	rtTet.right = LEFT_SPACE + 16 * 10;
 	rtTet.bottom = TOP_SPACE + 16 * 24;
 
-	InflateRect( &rtTet, 2, 2);
+	InflateRect(&rtTet, 2, 2);
 
-	for( i = 0 ; i < 8 ; i++ )
+	for (i = 0; i < 8; i++)
 	{
-		BlockImageList[i] = LoadBitmap( g_hInst, MAKEINTRESOURCE(109 + i) );
+		BlockImageList[i] = LoadBitmap(g_hInst, MAKEINTRESOURCE(109 + i));
 	}
-	for( i = 0 ; i < 11 ; i++ )
+	for (i = 0; i < 11; i++)
 	{
-		NumberList[i] = LoadBitmap( g_hInst, MAKEINTRESOURCE( 120 + i ) );
+		NumberList[i] = LoadBitmap(g_hInst, MAKEINTRESOURCE(120 + i));
 	}
 
-	for( i = 0 ; i < 24 ; i++ )
+	for (i = 0; i < 24; i++)
 	{
-		for( j = 0 ; j < 10 ; j++ ) 
+		for (j = 0; j < 10; j++)
 		{
 			arTetPoint[j + i * 10].x = LEFT_SPACE + j * 16;
 			arTetPoint[j + i * 10].y = TOP_SPACE + i * 16;
@@ -145,38 +145,38 @@ int Msg_CREATE(HWND hWnd, WPARAM wParam, LPARAM lParam)
 	}
 
 
-	MakeBlockOrder( arBlockOrder );
+	MakeBlockOrder(arBlockOrder);
 
-	for( i = 140 ; i < 150 ; i++ )
+	for (i = 140; i < 150; i++)
 	{
 		Tet.arTet[i] = 26;
 	}
-	Tet.arTet[ 142 ] = 0;
+	Tet.arTet[142] = 0;
 	Tet.arTet[125] = 25;
 	Tet.arTet[127] = 22;
 
 	//SetTimer(hWnd, 1, 1000, Proc_DropDown );
-	
-	PutBlockInTET( &Tet, NEMO );
+
+	PutBlockInTET(&Tet, NEMO);
 	Tet.nCurrentBlockShape = NEMO;
 
-	MakeTransparentBlocks( &Tet );
+	MakeTransparentBlocks(&Tet);
 
 	DoubleBufferingDraw();
 	return 0;
 }
 
-void MakeSolidBlocksStraight( TETRIS *Tet )
+void MakeSolidBlocksStraight(TETRIS *Tet)
 {
 	int i;
 
-	for( i = 0 ; i < 4 ; i++ )
-	{		
-		Tet->arTet[ Tet->Moving[i] ] = 0;		
-	}
-	for( i = 0 ; i < 4 ; i++ )
+	for (i = 0; i < 4; i++)
 	{
-		Tet->arTet[ Tet->Transparent[i] ] = Tet->nCurrentBlockShape + 20;		
+		Tet->arTet[Tet->Moving[i]] = 0;
+	}
+	for (i = 0; i < 4; i++)
+	{
+		Tet->arTet[Tet->Transparent[i]] = Tet->nCurrentBlockShape + 20;
 	}
 
 	Tet->nCurrentBlockShape = 0;
@@ -184,41 +184,41 @@ void MakeSolidBlocksStraight( TETRIS *Tet )
 	Tet->nXpos = 0;
 	Tet->nYpos = 0;
 }
-void EraseLine( TETRIS *Tet )
+void EraseLine(TETRIS *Tet)
 {
 	int i;
 	int j;
 
-	for( i = 0 ; i < 24; i++ )
+	for (i = 0; i < 24; i++)
 	{
-		for( j = 0 ; j < 10 ; j++ )
+		for (j = 0; j < 10; j++)
 		{
-			if( Tet->arTet[ i * 10 + j ] < 20 )
-				break;			
+			if (Tet->arTet[i * 10 + j] < 20)
+				break;
 		}
-		if( j == 10 )
+		if (j == 10)
 		{
-			memcpy( Tet->arTet + 10, Tet->arTet, sizeof(int) * i * 10);
-			Tet->nScore += 123; // ¡°ºˆ∞° ¥ı«ÿ¡˝¥œ¥Ÿ.
+			memcpy(Tet->arTet + 10, Tet->arTet, sizeof(int) * i * 10);
+			Tet->nScore += 123; // Ï†êÏàòÍ∞Ä ÎçîÌï¥ÏßëÎãàÎã§.
 			i--;
 		}
 	}
 }
 
-VOID CALLBACK Proc_DropDown(HWND hWnd, UINT uMsg, UINT idEvent, DWORD dwTime )
+VOID CALLBACK Proc_DropDown(HWND hWnd, UINT uMsg, UINT idEvent, DWORD dwTime)
 {
 	int nResult;
-	
-	nResult = MoveBlocks( &Tet, VK_DOWN );
-	
-	if( nResult == -1 )
+
+	nResult = MoveBlocks(&Tet, VK_DOWN);
+
+	if (nResult == -1)
 	{
-		MakeSolidBlocks( &Tet );
-		EraseLine( &Tet );
-		ScoreBoard( &Tet );
-		PutBlockInTET( &Tet, arBlockOrder[ ++nBlockOrderCtr ] );
-		MakeTransparentBlocks( &Tet );
-	}	
+		MakeSolidBlocks(&Tet);
+		EraseLine(&Tet);
+		ScoreBoard(&Tet);
+		PutBlockInTET(&Tet, arBlockOrder[++nBlockOrderCtr]);
+		MakeTransparentBlocks(&Tet);
+	}
 	DoubleBufferingDraw();
 	//InvalidateRect(hWnd, NULL, TRUE );
 }
@@ -226,41 +226,41 @@ int Msg_KEYDOWN(HWND hWnd, WPARAM wParam, LPARAM lParam)
 {
 	int nResult;
 
-	nResult = MoveBlocks( &Tet, (int)wParam );
-	if( nResult == 0 )
-		MakeTransparentBlocks( &Tet );
+	nResult = MoveBlocks(&Tet, (int)wParam);
+	if (nResult == 0)
+		MakeTransparentBlocks(&Tet);
 
-	switch( wParam )
+	switch (wParam)
 	{
 	case VK_F1:
-		MakeBlockOrder( arBlockOrder );
-		InitializeTET( &Tet );
-		SetTimer(hWnd, 1, 1000, Proc_DropDown );
+		MakeBlockOrder(arBlockOrder);
+		InitializeTET(&Tet);
+		SetTimer(hWnd, 1, 1000, Proc_DropDown);
 		Tet.nCurrentBlockState = 1;
-		PutBlockInTET( &Tet, arBlockOrder[ nBlockOrderCtr ]);
-		MakeTransparentBlocks( &Tet );
+		PutBlockInTET(&Tet, arBlockOrder[nBlockOrderCtr]);
+		MakeTransparentBlocks(&Tet);
 
 		break;
 	case VK_SPACE:
-		MakeSolidBlocksStraight( &Tet );
-		EraseLine( &Tet );
-		ScoreBoard( &Tet );
-		PutBlockInTET( &Tet, arBlockOrder[ ++nBlockOrderCtr ] );
-		MakeTransparentBlocks( &Tet );
+		MakeSolidBlocksStraight(&Tet);
+		EraseLine(&Tet);
+		ScoreBoard(&Tet);
+		PutBlockInTET(&Tet, arBlockOrder[++nBlockOrderCtr]);
+		MakeTransparentBlocks(&Tet);
 		break;
 	case VK_DOWN:
-		if( nResult == -1 )
+		if (nResult == -1)
 		{
-			MakeSolidBlocks( &Tet );
-			EraseLine( &Tet );
-			ScoreBoard( &Tet );
-			PutBlockInTET( &Tet, arBlockOrder[ ++nBlockOrderCtr ] );
-			MakeTransparentBlocks( &Tet );
+			MakeSolidBlocks(&Tet);
+			EraseLine(&Tet);
+			ScoreBoard(&Tet);
+			PutBlockInTET(&Tet, arBlockOrder[++nBlockOrderCtr]);
+			MakeTransparentBlocks(&Tet);
 		}
 		break;
 	case VK_UP:
-		RotateBlocks( &Tet );
-		MakeTransparentBlocks( &Tet );
+		RotateBlocks(&Tet);
+		MakeTransparentBlocks(&Tet);
 		break;
 	}
 	DoubleBufferingDraw();
@@ -269,19 +269,19 @@ int Msg_KEYDOWN(HWND hWnd, WPARAM wParam, LPARAM lParam)
 int Msg_DESTROY(HWND hWnd, WPARAM wParam, LPARAM lParam)
 {
 	int i;
-	for( i = 0 ; i < 8 ; i++ )
+	for (i = 0; i < 8; i++)
 	{
-		DeleteObject( BlockImageList[i] );
+		DeleteObject(BlockImageList[i]);
 	}
-	for( i = 0 ; i < 11 ; i++ )
+	for (i = 0; i < 11; i++)
 	{
-		DeleteObject( NumberList[i] );
+		DeleteObject(NumberList[i]);
 	}
 	PostQuitMessage(0);
 	return 0;
 }
 
-void DrawBitmap( HDC hdc, int x, int y, HBITMAP hBit)
+void DrawBitmap(HDC hdc, int x, int y, HBITMAP hBit)
 {
 	HDC MemDC;
 	HBITMAP OldBitmap;
@@ -300,76 +300,76 @@ void DrawBitmap( HDC hdc, int x, int y, HBITMAP hBit)
 	SelectObject(MemDC, OldBitmap);
 	DeleteDC(MemDC);
 }
-void DoubleBufferingDraw( void )
+void DoubleBufferingDraw(void)
 {
 	RECT crt;
 	HDC hdc, hMemDC;
 	HBITMAP OldBit;
 
-	int i,j;
+	int i, j;
 
 	GetClientRect(hMainWnd, &crt);
 	hdc = GetDC(hMainWnd);
 
-	if( hBit == NULL )
+	if (hBit == NULL)
 		hBit = CreateCompatibleBitmap(hdc, crt.right, crt.bottom);
 
 	hMemDC = CreateCompatibleDC(hdc);
 	OldBit = (HBITMAP)SelectObject(hMemDC, hBit);
 
 	//FillRect(hMemDC, &crt, GetSysColorBrush(COLOR_WINDOW) );
-	FillRect(hMemDC, &crt, (HBRUSH)GetStockObject( BLACK_BRUSH ) ); // ∞À¡§ªˆ πË∞Ê ∫Í∑ØΩ√ ¿‘¥œ¥Ÿ.
+	FillRect(hMemDC, &crt, (HBRUSH)GetStockObject(BLACK_BRUSH)); // Í≤ÄÏ†ïÏÉâ Î∞∞Í≤Ω Î∏åÎü¨Ïãú ÏûÖÎãàÎã§.
 	////
 
-	for( i = 0 ; i < 240 ; i++ ) // ∫Ì∑œ¿Ã √‚∑¬µ… ¿ßƒ°∏¶ ¡°¿∏∑Œ «•Ω√«’¥œ¥Ÿ.
+	for (i = 0; i < 240; i++) // Î∏îÎ°ùÏù¥ Ï∂úÎ†•Îê† ÏúÑÏπòÎ•º Ï†êÏúºÎ°ú ÌëúÏãúÌï©ÎãàÎã§.
 	{
-		SetPixel(hMemDC, arTetPoint[i].x, arTetPoint[i].y, RGB(0,0,0) );
+		SetPixel(hMemDC, arTetPoint[i].x, arTetPoint[i].y, RGB(0, 0, 0));
 	}
 
 	//FillRect(hMemDC, &rtTet, (HBRUSH)GetStockObject( BLACK_BRUSH ) );
-	FrameRect(hMemDC, &rtTet, (HBRUSH)GetStockObject( WHITE_BRUSH ) ); // «œæ·ªˆ ∞—∂Û¿Œ¿ª ±◊∏≥¥œ¥Ÿ.
-	
+	FrameRect(hMemDC, &rtTet, (HBRUSH)GetStockObject(WHITE_BRUSH)); // ÌïòÏñÄÏÉâ Í≤âÎùºÏù∏ÏùÑ Í∑∏Î¶ΩÎãàÎã§.
 
-	for( i = 0 ; i < 24 ; i++ ) // πËø≠¿« ªÛ≈¬∏¶ ∫∏ø©¡÷¥¬ √‚∑¬¿‘¥œ¥Ÿ.
+
+	for (i = 0; i < 24; i++) // Î∞∞Ïó¥Ïùò ÏÉÅÌÉúÎ•º Î≥¥Ïó¨Ï£ºÎäî Ï∂úÎ†•ÏûÖÎãàÎã§.
 	{
-		for( j = 0 ; j < 10 ; j++ )
+		for (j = 0; j < 10; j++)
 		{
-			wsprintf(str,TEXT("%2d"), Tet.arTet[i * 10 + j]);
-			TextOut(hMemDC, 200 + j * 20 , 10 + i * 18, str, lstrlen(str) );
+			wsprintf(str, TEXT("%2d"), Tet.arTet[i * 10 + j]);
+			TextOut(hMemDC, 200 + j * 20, 10 + i * 18, str, lstrlen(str));
 		}
 	}
 
-	wsprintf(str, TEXT("%d %d %d %d"), Tet.Moving[0],Tet.Moving[1],Tet.Moving[2],Tet.Moving[3] ); // øÚ¡˜¿Ã¥¬ ∫Ì∑œ¿« ªÛ≈¬∏¶ ∫∏ø©¡›¥œ¥Ÿ.
-	TextOut(hMemDC, 450, 200, str, lstrlen(str) );
-	wsprintf(str, TEXT("%d %d %d %d"), Tet.Transparent[0],Tet.Transparent[1],Tet.Transparent[2],Tet.Transparent[3] ); // ≈ı∏Ì∫Ì∑œ¿« ªÛ≈¬∏¶ ∫∏ø©¡›¥œ¥Ÿ.
-	TextOut(hMemDC, 450, 230, str, lstrlen(str) );
+	wsprintf(str, TEXT("%d %d %d %d"), Tet.Moving[0], Tet.Moving[1], Tet.Moving[2], Tet.Moving[3]); // ÏõÄÏßÅÏù¥Îäî Î∏îÎ°ùÏùò ÏÉÅÌÉúÎ•º Î≥¥Ïó¨Ï§çÎãàÎã§.
+	TextOut(hMemDC, 450, 200, str, lstrlen(str));
+	wsprintf(str, TEXT("%d %d %d %d"), Tet.Transparent[0], Tet.Transparent[1], Tet.Transparent[2], Tet.Transparent[3]); // Ìà¨Î™ÖÎ∏îÎ°ùÏùò ÏÉÅÌÉúÎ•º Î≥¥Ïó¨Ï§çÎãàÎã§.
+	TextOut(hMemDC, 450, 230, str, lstrlen(str));
 
-	for( i = 0 ; i < 8 ; i++ )
+	for (i = 0; i < 8; i++)
 	{
-		DrawBitmap(hMemDC, 415 + i * 16, 45, BlockImageList[i] ); // ∫Ì∑œ¿« ¿ÃπÃ¡ˆ∏¶ √‚∑¬«’¥œ¥Ÿ.
+		DrawBitmap(hMemDC, 415 + i * 16, 45, BlockImageList[i]); // Î∏îÎ°ùÏùò Ïù¥ÎØ∏ÏßÄÎ•º Ï∂úÎ†•Ìï©ÎãàÎã§.
 	}
 
-	for( i = 0 ; i < 24 ; i++ )
+	for (i = 0; i < 24; i++)
 	{
-		for( j = 0 ; j < 10 ; j++ )
+		for (j = 0; j < 10; j++)
 		{
-			if( Tet.arTet[ j + i * 10 ] > 0 )
-				DrawBitmap(hMemDC, arTetPoint[ j + i * 10 ].x, arTetPoint[ j + i * 10 ].y, BlockImageList[ (Tet.arTet[ j + i * 10] - 1) % 10 ] );
+			if (Tet.arTet[j + i * 10] > 0)
+				DrawBitmap(hMemDC, arTetPoint[j + i * 10].x, arTetPoint[j + i * 10].y, BlockImageList[(Tet.arTet[j + i * 10] - 1) % 10]);
 
-			if( Tet.arTet[ j + i * 10 ] == -1 )
-				DrawBitmap(hMemDC, arTetPoint[ j + i * 10 ].x, arTetPoint[ j + i * 10 ].y, BlockImageList[ 7 ] );
+			if (Tet.arTet[j + i * 10] == -1)
+				DrawBitmap(hMemDC, arTetPoint[j + i * 10].x, arTetPoint[j + i * 10].y, BlockImageList[7]);
 
 		}
 	}
 
-	for( i = 0 ; i < 11 ; i++ )
+	for (i = 0; i < 11; i++)
 	{
-		DrawBitmap( hMemDC, 415 + i * 16, 10, NumberList[i] );
+		DrawBitmap(hMemDC, 415 + i * 16, 10, NumberList[i]);
 	}
 
-	for( i = 0 ; i < 10 ; i++ )
+	for (i = 0; i < 10; i++)
 	{
-		DrawBitmap( hMemDC, 10 + i * 16, 405, NumberList[ Tet.arScore[i] ] );
+		DrawBitmap(hMemDC, 10 + i * 16, 405, NumberList[Tet.arScore[i]]);
 	}
 
 	////

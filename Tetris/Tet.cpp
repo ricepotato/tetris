@@ -1,4 +1,4 @@
-#include<windows.h>
+#include "stdafx.h"
 #include"Tet.h"
 
 int Oi[2][16] = {	
@@ -369,7 +369,7 @@ void PutBlockInTET( TETRIS *Tet, int nShape)
 	// 이 함수가 호출되어야 테트판에 블록이 놓아지고 게임이 시작됩니다.
 	int i;
 	int *ptr;
-	int *pShapePtr;
+	int *pShapePtr = NULL;
 
 	int pos = 0;
 	int ctr = 0;	
@@ -452,7 +452,7 @@ BOOL PrePutBlock( TETRIS *Tet )
 	*/
 	int i;
 	int *ptr;
-	int *pShapePtr;
+	int *pShapePtr = NULL;
 
 	int pos = 0;
 	int ctr = 0;

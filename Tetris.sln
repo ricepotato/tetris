@@ -1,20 +1,31 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 9.00
-# Visual Studio 2005
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Tetris", "Tetris\Tetris.vcproj", "{5BE0F143-34EE-4E2C-AF2E-A1D96D2F63F3}"
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.489
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Tetris", "Tetris\Tetris.vcxproj", "{95B84FA9-277D-41F9-8991-5AF2CF5A0E43}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|Win32 = Debug|Win32
-		Release|Win32 = Release|Win32
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{5BE0F143-34EE-4E2C-AF2E-A1D96D2F63F3}.Debug|Win32.ActiveCfg = Debug|Win32
-		{5BE0F143-34EE-4E2C-AF2E-A1D96D2F63F3}.Debug|Win32.Build.0 = Debug|Win32
-		{5BE0F143-34EE-4E2C-AF2E-A1D96D2F63F3}.Release|Win32.ActiveCfg = Release|Win32
-		{5BE0F143-34EE-4E2C-AF2E-A1D96D2F63F3}.Release|Win32.Build.0 = Release|Win32
+		{95B84FA9-277D-41F9-8991-5AF2CF5A0E43}.Debug|x64.ActiveCfg = Debug|x64
+		{95B84FA9-277D-41F9-8991-5AF2CF5A0E43}.Debug|x64.Build.0 = Debug|x64
+		{95B84FA9-277D-41F9-8991-5AF2CF5A0E43}.Debug|x86.ActiveCfg = Debug|Win32
+		{95B84FA9-277D-41F9-8991-5AF2CF5A0E43}.Debug|x86.Build.0 = Debug|Win32
+		{95B84FA9-277D-41F9-8991-5AF2CF5A0E43}.Release|x64.ActiveCfg = Release|x64
+		{95B84FA9-277D-41F9-8991-5AF2CF5A0E43}.Release|x64.Build.0 = Release|x64
+		{95B84FA9-277D-41F9-8991-5AF2CF5A0E43}.Release|x86.ActiveCfg = Release|Win32
+		{95B84FA9-277D-41F9-8991-5AF2CF5A0E43}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A4B203D3-B141-4B1B-AA24-1A787B96812E}
 	EndGlobalSection
 EndGlobal
