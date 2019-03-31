@@ -537,7 +537,7 @@ void ScoreBoard( TETRIS *Tet )
 	추가로 3자리수마다 콤마에 해당하는 값을 할당할 수 있습니다.
 	*/
 	int temp;
-	int i, j, k;
+	int i, j;
 	int tempScore = Tet->nScore;
 
 	for( i = 0 ; i < 10 ; i++ ) // 각 자리수를 배열요소 하나에 넣습니다/
